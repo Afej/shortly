@@ -1,0 +1,81 @@
+:root {
+  --primary-color: hsl(180, 66%, 49%);
+  --secondary-color: hsl(0, 87%, 67%);
+  --dark-violet: hsl(257, 27%, 26%);
+  --bg-gray: hsl(0, 0%, 75%);
+  --bg-grayish-violet: hsl(257, 7%, 63%);
+  --bg-dark-blue: hsl(255, 11%, 22%);
+  --bg-dark-violet: hsl(260, 8%, 14%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins";
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--bg-grayish-violet);
+}
+
+a {
+  text-decoration: none;
+  color: var(--bg-grayish-violet);
+}
+
+ul {
+  list-style: none;
+}
+
+li{
+  padding: 0 1.5rem;
+}
+
+.container {
+  max-width: 85vw;
+  margin: 1rem auto;
+  overflow: auto;
+  padding: 1rem 2rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.7rem 2rem;
+  color: white;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  border-radius: 30px;
+}
+
+.btn:hover{
+  opacity: 0.5;
+  color: white;
+}
+
+.btn-primary {
+  background: var(--primary-color);
+}
+
+.btn-secondary {
+  background: var(--dark-violet);
+}
+
+.rounded {
+  border-radius: 15px;
+}
+
+
+/* - Weights: 500, 700 */
+
+/* - Mobile: 375px */
+/* - Desktop: 1440px */
+
+@media (max-width: 500px) {
+  body {
+    background: var(--secondary-color);
+  }
+}
