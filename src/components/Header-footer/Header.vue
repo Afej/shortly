@@ -1,7 +1,7 @@
 <template>
   <header class="container">
     <nav class="navbar">
-      <h1 class="logo">Shortly</h1>
+      <img :src="require('@/assets/images/logo.svg')" alt />
 
       <ul class="nav">
         <li class="nav-item">
@@ -16,8 +16,7 @@
       </ul>
     </nav>
 
-
-    <ul class="nav">
+    <ul class="navbar-btn">
       <li class="nav-item">
         <a href="#" class="nav-link">Login</a>
       </li>
@@ -25,11 +24,44 @@
         <a href="#" class="btn btn-primary">Sign Up</a>
       </li>
     </ul>
+
+    <ion-icon name="menu-outline" @click="toggleNav"></ion-icon>
+
+    <div class="mobile-nav rounded" v-if="mobileNav">
+      <ul>
+        <li class="nav-item">
+          <a href="#" class="nav-link">Features</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">Pricing</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">Resources</a>
+        </li>
+        <hr />
+        <li class="nav-item">
+          <a href="#" class="nav-link">Login</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="btn btn-primary">Sign Up</a>
+        </li>
+      </ul>
+    </div>
   </header>
 </template>
 
 <script>
-export default {};
+export default {
+  data: () => ({
+    mobileNav: false,
+  }),
+  methods: {
+    toggleNav() {
+      this.mobileNav = !this.mobileNav;
+      console.log("yes");
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -37,11 +69,6 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-.logo {
-  color: var(--bg-dark-violet);
-  font-size: 2.5rem;
 }
 
 .navbar {
@@ -52,14 +79,66 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  padding: 0 3rem;
+  padding: 0 2rem;
 }
 
-a{
+.navbar-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+a {
   font-weight: 700;
 }
 
-.nav-link:hover{
-   color: var(--bg-dark-violet);
+.nav-item .nav-link {
+  padding: 0 1.5rem;
+}
+
+.nav-link:hover {
+  color: var(--bg-dark-violet);
+}
+
+ion-icon {
+  display: none;
+}
+
+.mobile-nav {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  header {
+    position: relative;
+  }
+
+  ul.navbar-btn,
+  ul.nav {
+    display: none;
+  }
+
+  ion-icon {
+    font-size: 64px;
+    display: block;
+  }
+
+  .mobile-nav {
+    background: var(--dark-violet);
+    position: absolute;
+    display: block;
+    width: 100%;
+    top: 70%;
+    left: 0;
+    height: 300px;
+    z-index: 3;
+    text-align: center;
+    padding: 1.5rem;
+    margin: 1rem 0;
+  }
+
+  .mobile-nav .nav-item{
+    padding: 0.7rem 0;
+  }
 }
 </style>

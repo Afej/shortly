@@ -19,6 +19,8 @@ body {
   font-size: 18px;
   font-weight: 500;
   color: var(--bg-grayish-violet);
+  line-height: 1.5;
+  overflow-x: hidden;
 }
 
 a {
@@ -30,15 +32,11 @@ ul {
   list-style: none;
 }
 
-li{
-  padding: 0 1.5rem;
-}
-
 .container {
   max-width: 85vw;
-  margin: 1rem auto;
-  overflow: auto;
-  padding: 1rem 2rem;
+  margin: auto;
+  /* overflow: auto; */
+  padding: 1rem;
 }
 
 .btn {
@@ -49,9 +47,10 @@ li{
   cursor: pointer;
   outline: none;
   border-radius: 30px;
+  margin: 0 1rem;
 }
 
-.btn:hover{
+.btn:hover {
   opacity: 0.5;
   color: white;
 }
@@ -68,14 +67,8 @@ li{
   border-radius: 15px;
 }
 
-
-/* - Weights: 500, 700 */
-
-/* - Mobile: 375px */
-/* - Desktop: 1440px */
-
 @media (max-width: 500px) {
-  body {
-    background: var(--secondary-color);
+  .container {
+    padding: 1rem 0;
   }
 }
