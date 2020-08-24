@@ -21,6 +21,7 @@ body {
   color: var(--bg-grayish-violet);
   line-height: 1.5;
   overflow-x: hidden;
+  /* background: var(--bg-grayish-violet); */
 }
 
 a {
@@ -40,7 +41,7 @@ ul {
 
 .btn {
   display: inline-block;
-  padding: 0.7rem 2rem;
+  padding: 0.9rem 2rem;
   color: white;
   border: none;
   cursor: pointer;
@@ -67,7 +68,7 @@ ul {
   padding: 1.4rem 2rem ;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 768px) {
   .container {
     padding: 1rem 0;
   }

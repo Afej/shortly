@@ -38,7 +38,7 @@
         <li class="nav-item">
           <a href="#" class="nav-link">Resources</a>
         </li>
-        <hr />
+        <!-- <hr /> -->
         <li class="nav-item">
           <a href="#" class="nav-link">Login</a>
         </li>
@@ -128,17 +128,25 @@ ion-icon {
     position: absolute;
     display: block;
     width: 100%;
-    top: 70%;
+    top: 80%;
     left: 0;
     height: 300px;
     z-index: 3;
     text-align: center;
-    padding: 1.5rem;
+    padding: 0.5rem 2rem;
     margin: 1rem 0;
   }
 
-  .mobile-nav .nav-item{
+  .mobile-nav .nav-item {
     padding: 0.7rem 0;
+  }
+
+  .mobile-nav .nav-item:nth-child(3) {
+    border-bottom: 1px solid var(--bg-gray);
+  }
+
+  .mobile-nav .nav-item a.btn{
+    display: block;
   }
 }
 </style>
