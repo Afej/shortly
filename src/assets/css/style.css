@@ -35,7 +35,6 @@ ul {
 .container {
   max-width: 85vw;
   margin: auto;
-  /* overflow: auto; */
   padding: 1rem;
 }
 
@@ -51,7 +50,7 @@ ul {
 }
 
 .btn:hover {
-  opacity: 0.5;
+  opacity: 0.7;
   color: white;
 }
 
@@ -64,7 +63,8 @@ ul {
 }
 
 .rounded {
-  border-radius: 15px;
+  border-radius: 10px;
+  padding: 1.4rem 2rem ;
 }
 
 @media (max-width: 500px) {
