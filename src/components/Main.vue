@@ -33,7 +33,6 @@
 import Statistics from "./Statistics";
 
 export default {
-  data: () => ({}),
   components: {
     Statistics,
   },

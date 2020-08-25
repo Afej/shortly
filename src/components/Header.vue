@@ -25,8 +25,9 @@
       </li>
     </ul>
 
-    <ion-icon name="menu-outline" @click="toggleNav"></ion-icon>
+    <!-- <ion-icon name="menu-outline" @click="toggleNav"></ion-icon> -->
 
+    <i class="fas fa-bars fa-2x" @click="toggleNav"></i>
     <div class="mobile-nav rounded" v-if="mobileNav">
       <ul>
         <li class="nav-item">
@@ -58,7 +59,6 @@ export default {
   methods: {
     toggleNav() {
       this.mobileNav = !this.mobileNav;
-      console.log("yes");
     },
   },
 };
@@ -145,7 +145,7 @@ ion-icon {
     border-bottom: 1px solid var(--bg-gray);
   }
 
-  .mobile-nav .nav-item a.btn{
+  .mobile-nav .nav-item a.btn {
     display: block;
   }
 }

@@ -1,81 +1,38 @@
 <template>
   <section class="container shortener-container">
     <div class="shortener rounded">
-      <form class="shortener-form">
-        <input type="text" placeholder="Shorten a link here..." class="rounded" />
-        <p v-if="error">Please add a link</p>
-        <button href="#" class="btn rounded btn-primary">Shorten it!</button>
-      </form>
+      <div class="shortener-content">
+        <form class="shortener-form" @submit.prevent="shortenUrl">
+          <input
+            type="text"
+            placeholder="Shorten a link here..."
+            class="rounded"
+            v-model="linkUrl"
+            :class="{error}"
+          />
+          <button class="btn rounded btn-primary">Shorten it!</button>
+        </form>
+        <p v-if="error" class="error-text">Please add a link</p>
+      </div>
     </div>
 
-    <div class="links-container" v-if="links !== null">
-      <div class="link-card rounded">
-        <p class="long-link">
-          <a href="#">https://www.frontendmentor.io</a>
-        </p>
-
+    <div class="links-container" v-if="links">
+      <div class="link-card rounded" v-for="link in links" :key="link.hashid">
+        <p class="long-link">{{link.url}}</p>
         <div class="rel-content">
           <p class="rel-link">
-            <a href="#">https://rel.ink/</a>
+            <a :href="link.relUrl">{{link.relUrl}}</a>
           </p>
-          <button href="#" class="btn rounded btn-primary copy">Copy</button>
-        </div>
-      </div>
-      <div class="link-card rounded">
-        <p class="long-link">
-          <a href="#">https://www.frontendmentor.io</a>
-        </p>
-
-        <div class="rel-content">
-          <p class="rel-link">
-            <a href="#">https://rel.ink/</a>
-          </p>
-          <button href="#" class="btn rounded btn-primary copy">Copy</button>
-        </div>
-      </div>
-      <div class="link-card rounded">
-        <p class="long-link">
-          <a href="#">https://www.frontendmentor.io</a>
-        </p>
-
-        <div class="rel-content">
-          <p class="rel-link">
-            <a href="#">https://rel.ink/</a>
-          </p>
-          <button href="#" class="btn rounded btn-primary copy">Copy</button>
-        </div>
-      </div>
-      <div class="link-card rounded">
-        <p class="long-link">
-          <a href="#">https://www.frontendmentor.io</a>
-        </p>
-        <div class="rel-content">
-          <p class="rel-link">
-            <a href="#">https://rel.ink/</a>
-          </p>
-          <button href="#" class="btn rounded btn-primary copy">Copy</button>
-        </div>
-      </div>
-      <div class="link-card rounded">
-        <p class="long-link">
-          <a href="#">https://www.frontendmentor.io</a>
-        </p>
-        <div class="rel-content">
-          <p class="rel-link">
-            <a href="#">https://rel.ink/</a>
-          </p>
-          <button href="#" class="btn rounded btn-primary copy">Copy</button>
-        </div>
-      </div>
-      <div class="link-card rounded">
-        <p class="long-link">
-          <a href="#">https://www.frontendmentor.io</a>
-        </p>
-        <div class="rel-content">
-          <p class="rel-link">
-            <a href="#">https://rel.ink/</a>
-          </p>
-          <button href="#" class="btn rounded btn-primary copy">Copy</button>
+          <button
+            class="btn rounded btn-primary copy"
+            ref="copy"
+          >Copy</button>
+          <!-- <button
+            class="btn rounded btn-primary copy"
+            v-clipboard="link.relUrl"
+            v-clipboard:success="clipboardSuccessHandler"
+            ref="copy"
+          >Copy</button> -->
         </div>
       </div>
     </div>
@@ -83,11 +40,49 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   data: () => ({
     links: [],
+    linkUrl: "",
+    error: false,
   }),
-  methods: {},
+  mounted() {
+    if (localStorage.getItem("links")) {
+      this.links = JSON.parse(localStorage.getItem("links"));
+    }
+  },
+  methods: {
+    shortenUrl() {
+      if (this.linkUrl !== "") {
+        const url = this.linkUrl.trim();
+        axios.post("https://rel.ink/api/links/", { url }).then((res) => {
+          let data = {
+            url: `${res.data.url.slice(0, 30)}...`,
+            relUrl: `https://rel.ink/${res.data.hashid}`,
+          };
+
+          this.links.unshift(data);
+
+          const ls = this.links;
+          // console.log(ls)
+
+          localStorage.setItem("links", JSON.stringify(ls));
+        });
+
+        this.error = false;
+      } else {
+        this.error = true;
+      }
+
+      this.linkUrl = "";
+    },
+    // clipboardSuccessHandler() {
+    //   this.$refs.copy.innerHTML = "Copied!";
+    //   this.$refs.copy.style.backgroundColor = "var(--dark-violet)";
+    // },
+  },
 };
 </script>
 
@@ -120,11 +115,23 @@ export default {
   font-size: 18px;
 }
 
+.shortener-form input.error {
+  border: 3px solid var(--secondary-color);
+}
+.shortener-form input.error::placeholder {
+  color: var(--secondary-color);
+}
+
+.error-text {
+  color: var(--secondary-color);
+  font-style: italic;
+  margin: 0.5rem 0;
+}
+
 button {
   font-weight: 700;
   font-size: 18px;
 }
-
 
 .link-card {
   padding: 0 2rem;
@@ -139,7 +146,7 @@ button {
   margin: 1rem 0;
 }
 
-.long-link a {
+.long-link {
   color: var(--bg-dark-violet);
   font-weight: 700;
 }
@@ -150,6 +157,16 @@ button {
 
 .copy {
   padding: 1rem 2rem;
+}
+
+/* ////////////// */
+/* Media Queries */
+/* //////////// */
+
+@media (min-width: 1200px) {
+  .shortener-form {
+    justify-content: space-between;
+  }
 }
 
 @media (max-width: 768px) {
@@ -177,6 +194,7 @@ button {
 
   .link-card {
     padding-top: 1rem;
+    align-items: flex-start;
   }
 
   .rel-content {
@@ -188,7 +206,7 @@ button {
     margin-bottom: 0.5rem;
   }
 
-  .copy{
+  .copy {
     display: block;
     width: 100%;
     margin: 0;
