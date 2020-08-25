@@ -21,18 +21,9 @@
         <p class="long-link">{{link.url}}</p>
         <div class="rel-content">
           <p class="rel-link">
-            <a :href="link.relUrl">{{link.relUrl}}</a>
+            <a :href="link.relUrl" id="relUrl">{{link.relUrl}}</a>
           </p>
-          <button
-            class="btn rounded btn-primary copy"
-            ref="copy"
-          >Copy</button>
-          <!-- <button
-            class="btn rounded btn-primary copy"
-            v-clipboard="link.relUrl"
-            v-clipboard:success="clipboardSuccessHandler"
-            ref="copy"
-          >Copy</button> -->
+          <button class="btn rounded btn-primary copy" @click="copyUrl" ref="copy">Copy</button>
         </div>
       </div>
     </div>
@@ -59,7 +50,7 @@ export default {
         const url = this.linkUrl.trim();
         axios.post("https://rel.ink/api/links/", { url }).then((res) => {
           let data = {
-            url: `${res.data.url.slice(0, 30)}...`,
+            url: `${res.data.url.slice(0, 25)}...`,
             relUrl: `https://rel.ink/${res.data.hashid}`,
           };
 
@@ -78,10 +69,19 @@ export default {
 
       this.linkUrl = "";
     },
-    // clipboardSuccessHandler() {
-    //   this.$refs.copy.innerHTML = "Copied!";
-    //   this.$refs.copy.style.backgroundColor = "var(--dark-violet)";
-    // },
+    copyUrl() {
+      this.$refs.copy.innerHTML = "Copied!";
+      this.$refs.copy.style.backgroundColor = "var(--dark-violet)";
+
+      const textToCopy = document.querySelector("#relUrl").innerText;
+      let tempInput = document.createElement("input");
+      tempInput.type = "text";
+      tempInput.value = textToCopy;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      document.execCommand("copy");
+      document.body.removeChild(tempInput);
+    },
   },
 };
 </script>

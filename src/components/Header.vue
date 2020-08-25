@@ -119,7 +119,6 @@ a {
   }
 
   .toggler {
-    /* font-size: 64px; */
     display: block;
   }
 
