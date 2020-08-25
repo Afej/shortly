@@ -118,8 +118,8 @@ a {
     display: none;
   }
 
-  ion-icon {
-    font-size: 64px;
+  .toggler {
+    /* font-size: 64px; */
     display: block;
   }
 
