@@ -27,7 +27,7 @@
 
     <!-- <ion-icon name="menu-outline" @click="toggleNav"></ion-icon> -->
 
-    <i class="fas fa-bars fa-2x" @click="toggleNav"></i>
+    <i class="fas fa-bars fa-2x toggler" @click="toggleNav"></i>
     <div class="mobile-nav rounded" v-if="mobileNav">
       <ul>
         <li class="nav-item">
@@ -100,7 +100,7 @@ a {
   color: var(--bg-dark-violet);
 }
 
-ion-icon {
+.toggler {
   display: none;
 }
 
