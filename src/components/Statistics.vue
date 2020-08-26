@@ -1,10 +1,9 @@
 <template>
   <section class="statistics">
-    
     <Shortener />
 
     <div class="container statistics-container">
-      <h3 class="statistics-title">Advanced Statistics</h3>
+      <h2 class="statistics-title">Advanced Statistics</h2>
       <p class="statistics-text">
         Track how your links are performing across the web with
         <br />our advanced statistics dashboard
@@ -19,7 +18,7 @@
               class="statistics-image"
             />
           </div>
-          <h4 class="statistics-card-heading">Brand Recognition</h4>
+          <h3 class="statistics-card-heading">Brand Recognition</h3>
           <p
             class="statistics-card-text"
           >Boost your brand recognition with each click. Generic links don't mean a thing. Branded links helps instill confidence in your content.</p>
@@ -33,7 +32,7 @@
             />
           </div>
 
-          <h4 class="statistics-card-heading">Detailed Records</h4>
+          <h3 class="statistics-card-heading">Detailed Records</h3>
           <p
             class="statistics-card-text"
           >Gain insights into who is clicking your links. Knowing when and where people engage with your content helps inform better decisions.</p>
@@ -47,7 +46,7 @@
             />
           </div>
 
-          <h4 class="statistics-card-heading">Fully Customizable</h4>
+          <h3 class="statistics-card-heading">Fully Customizable</h3>
           <p
             class="statistics-card-text"
           >Improve brand awareness and content discoverability through customizable links, supercharging audience engagement.</p>
@@ -70,13 +69,14 @@ export default {
 <style scoped>
 /* statistics section */
 .statistics {
-  background: var(--bg-gray);
-  padding:0 0 3rem 0;
+  background: rgb(240,241,246);
+  padding: 0 0 3rem 0;
   margin-top: 6rem;
   position: relative;
+  top: 3rem;
 }
 
-.statistics-container{
+.statistics-container {
   margin-top: -100px;
 }
 
@@ -97,7 +97,7 @@ export default {
   display: flex;
   justify-content: space-evenly;
   padding: 3rem 0;
-  margin: 4rem 0;
+  margin: 2rem 0 4rem 0;
 }
 
 .statistics-card {
@@ -223,7 +223,7 @@ export default {
     left: 35%;
   }
 
-   /* lines */
+  /* lines */
   .statistics-card.card-b::before {
     top: -29%;
     left: 50%;

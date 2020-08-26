@@ -59,22 +59,22 @@
         <ul class="socials">
           <li class="social-icon">
             <a href="#">
-              <img :src="require('@/assets/images/icon-facebook.svg')" alt />
+              <img :src="require('@/assets/images/icon-facebook.svg')" alt="social icon" />
             </a>
           </li>
           <li class="social-icon">
             <a href="#">
-              <img :src="require('@/assets/images/icon-twitter.svg')" alt />
+              <img :src="require('@/assets/images/icon-twitter.svg')" alt="social icon" />
             </a>
           </li>
           <li class="social-icon">
             <a href="#">
-              <img :src="require('@/assets/images/icon-pinterest.svg')" alt />
+              <img :src="require('@/assets/images/icon-pinterest.svg')" alt="social icon" />
             </a>
           </li>
           <li class="social-icon">
             <a href="#">
-              <img :src="require('@/assets/images/icon-instagram.svg')" alt />
+              <img :src="require('@/assets/images/icon-instagram.svg')" alt="social icon" />
             </a>
           </li>
         </ul>
@@ -88,7 +88,7 @@
 footer {
   background: var(--bg-dark-violet);
   color: white;
-  padding: 2rem 0;
+  padding: 3.5rem 0;
 }
 
 .footer-logo {
@@ -168,5 +168,4 @@ footer > .container {
     padding-top: 0.4rem;
   }
 }
-
 </style>

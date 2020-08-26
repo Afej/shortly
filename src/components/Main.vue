@@ -12,7 +12,7 @@
       <div class="bg-main">
         <img
           :src="require('@/assets/images/illustration-working.svg')"
-          alt
+          alt="illustration-image"
           class="illustration-image"
         />
       </div>
@@ -22,7 +22,7 @@
 
     <section class="boost">
       <div class="container boost-container">
-        <h4 class="boost-heading">Boost your links today</h4>
+        <h2 class="boost-heading">Boost your links today</h2>
         <a href="#" class="btn btn-primary">Get started</a>
       </div>
     </section>
@@ -47,17 +47,20 @@ main {
   justify-content: space-between;
   padding: 2rem 0 2rem 1rem;
   margin-right: 0;
+  margin-bottom: 2rem;
 }
 
 .main-content {
   margin-left: -70px;
+  position: relative;
+  left: -35px;
 }
 
 .lead-heading {
   color: var(--bg-dark-violet);
   font-weight: 700;
-  font-size: 4rem;
-  line-height: 1.2;
+  font-size: 4.5rem;
+  line-height: 1;
   padding: 1rem 0;
 }
 
@@ -100,6 +103,14 @@ a {
 }
 
 /* media queries */
+
+@media (max-width: 1024px) {
+  .main-content {
+    margin-left: -70px;
+    position: relative;
+    left: -10px;
+  }
+}
 
 @media (max-width: 768px) {
   /* main */

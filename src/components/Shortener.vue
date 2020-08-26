@@ -3,8 +3,11 @@
     <div class="shortener rounded">
       <div class="shortener-content">
         <form class="shortener-form" @submit.prevent="shortenUrl">
+          <!-- <label for="link"></label> -->
           <input
             type="text"
+            title="link"
+            aria-label="Shorten a link here..."
             placeholder="Shorten a link here..."
             class="rounded"
             v-model="linkUrl"
@@ -21,7 +24,12 @@
         <p class="long-link">{{link.url}}</p>
         <div class="rel-content">
           <p class="rel-link">
-            <a :href="link.relUrl" id="relUrl">{{link.relUrl}}</a>
+            <a
+              :href="link.relUrl"
+              id="relUrl"
+              title="relUrl"
+              aria-label="Shortened link here..."
+            >{{link.relUrl}}</a>
           </p>
           <button class="btn rounded btn-primary copy" @click="copyUrl" ref="copy">Copy</button>
         </div>
@@ -166,6 +174,15 @@ button {
 @media (min-width: 1200px) {
   .shortener-form {
     justify-content: space-between;
+  }
+
+  /* .shortener-content{
+    display: flex;
+    flex-direction: column;
+  } */
+
+  .shortener-form input {
+    width: 82%;
   }
 }
 
